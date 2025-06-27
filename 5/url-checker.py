@@ -29,7 +29,7 @@ def check_URL(url):#URLの有効性をチェックする。戻り値はbool,ス�
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"}
     try:
         response = requests.head(url, timeout=10,headers=headers)
-        time = response.elapsed.total_seconds()
+        time = round(response.elapsed.total_seconds() * 1000)
         if response.status_code == 200:
             return 'ok' , time
         elif response.status_code == 405:  # Method Not Allowed
